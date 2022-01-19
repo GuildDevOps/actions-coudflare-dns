@@ -13,9 +13,9 @@ on:
     type: [opened, reopened]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: custom-runner
     steps:
-      - uses: rez0n/create-dns-record@v2.1
+      - uses: GuildDevOps/create-coudflare-dns-record@v2.1
         with:
           type: "A"
           name: "review.example.com"
