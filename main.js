@@ -63,8 +63,8 @@ const createRecord = () => {
     process.exit(1);
   }
 
-  console.log(`::set-output name=id::${result.id}`);
-  console.log(`::set-output name=name::${result.name}`);
+  console.log(`echo "id=${result.id}" >> $GITHUB_ENV`);
+  console.log(`echo "name=${result.name}" >> $GITHUB_ENV`);
 };
 
 const updateRecord = (id) => {
