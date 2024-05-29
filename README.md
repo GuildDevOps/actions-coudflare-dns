@@ -1,6 +1,6 @@
 # Create DNS Record Action for GitHub
 
-Creates a new CloudFlare DNS record.
+Creates a new CloudFlare DNS record or updates an existing DNS record if one already exists for the input zone and name.
 
 ## Usage via Github Actions
 
