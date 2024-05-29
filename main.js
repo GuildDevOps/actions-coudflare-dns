@@ -3,7 +3,6 @@
  * https://github.com/marketplace/actions/cloudflare-create-dns-record
  */
 
-const path = require("path");
 const cp = require("child_process");
 
 const saveOutput = ({ id, name }) => {
