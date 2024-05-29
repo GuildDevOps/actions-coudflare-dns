@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: custom-runner
     steps:
-      - uses: GuildDevOps/create-cloudflare-dns-record@v2.1
+      - uses: GuildDevOps/create-cloudflare-dns-record@v3
         with:
           type: "A"
           name: "review.example.com"
