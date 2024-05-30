@@ -27,7 +27,9 @@ outputs:
   record_id:
     description: "Record ID"
   name:
-    description: 'Affected domain name'
+    description: "Affected domain name"
+  record_status:
+    description: "Whether the record was 'created' or 'updated'"
 runs:
   using: "node20"
   main: "main.js"

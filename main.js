@@ -5,9 +5,10 @@
 
 const cp = require("child_process");
 
-const saveOutput = ({ id, name }) => {
+const saveOutput = ({ id, name }, status) => {
   console.log(`echo "record_id=${id}" >> $GITHUB_OUTPUT`);
   console.log(`echo "name=${name}" >> $GITHUB_OUTPUT`);
+  console.log(`echo "record_status=${status}" >> $GITHUB_OUTPUT`);
 };
 
 const getCurrentRecordId = () => {
@@ -67,7 +68,7 @@ const createRecord = () => {
     process.exit(1);
   }
 
-  saveOutput(result);
+  saveOutput(result, "created");
 };
 
 const updateRecord = (id) => {
@@ -100,7 +101,7 @@ const updateRecord = (id) => {
     process.exit(1);
   }
 
-  saveOutput(result);
+  saveOutput(result, "updated");
 };
 
 const id = getCurrentRecordId();
