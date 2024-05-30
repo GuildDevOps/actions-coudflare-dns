@@ -25,7 +25,16 @@ jobs:
           token: ${{ secrets.CLOUDFLARE_TOKEN }}
           zone: ${{ secrets.CLOUDFLARE_ZONE }}
 ```
+
 **Use full qualified domain name to update if it exist**
+
+## Outputs
+
+| Field         | Description                                   | Type                            |
+| ------------- | --------------------------------------------- | ------------------------------- |
+| record_id     | Record ID                                     | string                          |
+| name          | Affected domain name                          | string                          |
+| record_status | Whether the record was 'created' or 'updated' | string ('created' \| 'updated') |
 
 ## License
 
