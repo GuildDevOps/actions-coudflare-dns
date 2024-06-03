@@ -3,8 +3,13 @@
  * https://github.com/marketplace/actions/cloudflare-create-dns-record
  */
 
-const path = require("path");
 const cp = require("child_process");
+
+const saveOutput = ({ id, name }, status) => {
+  console.log(`echo "record_id=${id}" >> $GITHUB_OUTPUT`);
+  console.log(`echo "name=${name}" >> $GITHUB_OUTPUT`);
+  console.log(`echo "record_status=${status}" >> $GITHUB_OUTPUT`);
+};
 
 const getCurrentRecordId = () => {
   //https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records
@@ -29,7 +34,7 @@ const getCurrentRecordId = () => {
   const record = result.find((x) => x.name === name);
 
   if (!record) {
-    return null
+    return null;
   }
 
   return record.id;
@@ -63,8 +68,7 @@ const createRecord = () => {
     process.exit(1);
   }
 
-  console.log(`echo "id=${result.id}" >> $GITHUB_ENV`);
-  console.log(`echo "name=${result.name}" >> $GITHUB_ENV`);
+  saveOutput(result, "created");
 };
 
 const updateRecord = (id) => {
@@ -97,9 +101,8 @@ const updateRecord = (id) => {
     process.exit(1);
   }
 
-  console.log(`::set-output name=record_id::${result.id}`);
-  console.log(`::set-output name=name::${result.name}`);
-}
+  saveOutput(result, "updated");
+};
 
 const id = getCurrentRecordId();
 if (id) {
